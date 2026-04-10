@@ -19,8 +19,10 @@ int main() {
     }
 
     if (buscar_saida(&lab, lab.inicioLin, lab.inicioCol, &caminho, &mochila)) {
-        printf("\nSaida encontrada!\n");
+        printf("\n==============================\n");
+        printf("LABIRINTO RESOLVIDO COM SUCESSO\n");
         printf("Valor final acumulado: %d\n", somar_mochila(mochila));
+        printf("==============================\n");
 
         limpar_visitados(&lab);
         marcar_caminho_no_mapa(caminho, lab.mapa, lab.colunas);
@@ -29,7 +31,9 @@ int main() {
             printf("Arquivo de saida salvo com sucesso em output/saida.txt\n");
         }
     } else {
-        printf("\nNao foi possivel encontrar a saida.\n");
+        printf("\n==============================\n");
+        printf("NAO FOI POSSIVEL ENCONTRAR A SAIDA\n");
+        printf("==============================\n");
     }
 
     liberar_pilha(&caminho);

@@ -77,11 +77,18 @@ int somar_mochila(NoTesouro *mochila) {
 }
 
 void imprimir_mochila(NoTesouro *mochila) {
-    printf("Mochila: [");
+    printf("Mochila: ");
+
+    if (mochila == NULL) {
+        printf("[vazia]\n");
+        return;
+    }
+
+    printf("[");
     while (mochila != NULL) {
         printf("%d", mochila->valor);
         if (mochila->prox != NULL) {
-            printf(", ");
+            printf(" | ");
         }
         mochila = mochila->prox;
     }

@@ -16,6 +16,10 @@ int buscar_saida(Labirinto *lab, int lin, int col, NoPilha **caminho, NoTesouro 
     push(caminho, lin, col);
 
     if (atual == 'S') {
+        imprimir_labirinto(lab, lin, col);
+        imprimir_mochila(*mochila);
+        printf("Valor total: %d\n", somar_mochila(*mochila));
+        printf("Saida encontrada!\n");
         return 1;
     }
 
@@ -34,6 +38,21 @@ int buscar_saida(Labirinto *lab, int lin, int col, NoPilha **caminho, NoTesouro 
     }
 
     imprimir_labirinto(lab, lin, col);
+
+    if (atual == 'T') {
+        printf("Evento: tesouro encontrado!\n");
+        printf("Valor sorteado: %d\n", tesouro_encontrado);
+    } else if (atual == 'A') {
+        printf("Evento: armadilha acionada!\n");
+        if (tesouro_removido == -1) {
+            printf("A mochila estava vazia. Nenhum tesouro foi perdido.\n");
+        } else {
+            printf("Tesouro perdido: %d\n", tesouro_removido);
+        }
+    } else {
+        printf("Evento: movimento realizado.\n");
+    }
+
     imprimir_mochila(*mochila);
     printf("Valor total: %d\n", somar_mochila(*mochila));
 
